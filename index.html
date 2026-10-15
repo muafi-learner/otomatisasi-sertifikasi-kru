@@ -85,22 +85,16 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-  <!-- TOP NAVBAR -->
   <header id="topNavbar" class="bg-white border-b border-gray-200 sticky top-0 z-30">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="w-8 h-8 bg-gray-900 flex items-center justify-center text-white font-bold text-xs">
-          KA
-        </div>
-        <div>
-          <h1 class="font-semibold text-sm tracking-tight text-gray-900">KINTOUN ACADEMY</h1>
-        </div>
+        <div class="w-8 h-8 bg-gray-900 flex items-center justify-center text-white font-bold text-xs">KA</div>
+        <div><h1 class="font-semibold text-sm tracking-tight text-gray-900">KINTOUN ACADEMY</h1></div>
       </div>
       <div class="flex items-center gap-2">
         <span id="dataSourceBadge" class="px-2.5 py-1 text-[10px] font-semibold tracking-wider bg-gray-100 text-gray-600 border border-gray-200">
           CONNECTING
         </span>
-        
         <button onclick="refreshData()" class="flex items-center gap-1.5 px-3 py-1.5 bg-gray-900 text-white text-xs font-medium hover:bg-black transition">
           <svg id="syncIcon" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
           Sync
@@ -109,7 +103,6 @@
     </div>
   </header>
 
-  <!-- KPI SUMMARY BAR -->
   <section class="bg-white border-b border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 grid grid-cols-2 md:grid-cols-4 gap-4">
       <div class="p-4 border border-gray-200 bg-gray-50 flex flex-col">
@@ -131,10 +124,7 @@
     </div>
   </section>
 
-  <!-- MAIN WORKSPACE -->
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-
-    <!-- LEFT PANEL: DIRECTORY -->
     <aside class="lg:col-span-4 bg-white border border-gray-200 flex flex-col h-[calc(100vh-180px)] sticky top-20">
       <div class="p-4 border-b border-gray-200">
         <div class="flex items-center justify-between mb-3">
@@ -142,13 +132,7 @@
           <span id="filteredCountBadge" class="text-[10px] text-gray-500">0 records</span>
         </div>
         <div class="space-y-2.5">
-          <input
-            id="searchInput"
-            type="text"
-            placeholder="Search NIP or Name..."
-            oninput="applyFilters()"
-            class="w-full px-3 py-2 border border-gray-300 text-sm text-gray-900 placeholder-gray-400"
-          />
+          <input id="searchInput" type="text" placeholder="Search NIP or Name..." oninput="applyFilters()" class="w-full px-3 py-2 border border-gray-300 text-sm text-gray-900 placeholder-gray-400" />
           <div class="grid grid-cols-2 gap-2">
             <select id="storeFilter" onchange="applyFilters()" class="w-full px-2 py-1.5 border border-gray-300 text-xs text-gray-700 bg-white">
               <option value="ALL">All Stores</option>
@@ -161,17 +145,10 @@
           </div>
         </div>
       </div>
-      
-      <!-- Crew List -->
-      <div id="crewListContainer" class="flex-1 overflow-y-auto bg-white">
-        <!-- Populated by JS -->
-      </div>
+      <div id="crewListContainer" class="flex-1 overflow-y-auto bg-white"></div>
     </aside>
 
-    <!-- RIGHT PANEL: DETAILS & CERTIFICATES -->
     <section class="lg:col-span-8 space-y-6">
-
-      <!-- Profile Header -->
       <div id="crewHeaderCard" class="bg-white border border-gray-200 p-6">
         <div class="flex justify-between items-start">
           <div>
@@ -188,21 +165,12 @@
             <span id="btnDownloadAllText">Download All PDF</span>
           </button>
         </div>
-
-        <!-- Clearance Matrix -->
         <div class="mt-6 pt-5 border-t border-gray-100">
           <p class="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-3">Clearance Matrix</p>
-          <div id="stationMatrixPills" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
-            <!-- Populated by JS -->
-          </div>
+          <div id="stationMatrixPills" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3"></div>
         </div>
       </div>
-
-      <!-- Certificates Grid -->
-      <div id="certificatesGrid" class="space-y-6">
-        <!-- Populated by JS -->
-      </div>
-
+      <div id="certificatesGrid" class="space-y-6"></div>
     </section>
   </main>
 
@@ -219,10 +187,7 @@
       { key: "leader",       label: "Leaders",       fullLabel: "Store / Shift Leader" }
     ];
 
-    // =========================================================================
-    // URL API GOOGLE APPS SCRIPT (SUDAH DIKOREKSI SESUAI SCREENSHOT)
-    // =========================================================================
-    const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycby4tN3yo3-5Z7o_9alOuoSsfkY2wl0ryZplL09LdT1cxYU9ClieXWZxoKMp-EFlqrPK/exec";
+    const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycby4tN3yo3-5Z7o_9aIOuoSsfkY2wI0ryZplL09LdT1cxYU9ClieXWZxokMp-EFIqrPK/exec";
 
     let allCrewData = [];
     let filteredCrewData = [];
@@ -243,14 +208,16 @@
       if (cachedData) {
         try {
           allCrewData = JSON.parse(cachedData);
-          
-          const badge = document.getElementById("dataSourceBadge");
-          badge.textContent = "LIVE (CACHED)";
-          badge.className = "px-2.5 py-1 text-[10px] font-semibold tracking-wider bg-yellow-50 text-yellow-700 border border-yellow-200";
-          
-          populateStoreDropdown();
-          updateSummaryKPIs();
-          applyFilters();
+          if (allCrewData && allCrewData.length > 0) {
+            const badge = document.getElementById("dataSourceBadge");
+            badge.textContent = "LIVE (CACHED)";
+            badge.className = "px-2.5 py-1 text-[10px] font-semibold tracking-wider bg-yellow-50 text-yellow-700 border border-yellow-200";
+            populateStoreDropdown();
+            updateSummaryKPIs();
+            applyFilters();
+          } else {
+            await refreshData();
+          }
         } catch (e) {
           console.error("Failed to parse cache:", e);
           await refreshData();
@@ -265,12 +232,10 @@
       const syncIcon = document.getElementById("syncIcon");
       if (syncIcon) syncIcon.classList.add("animate-spin");
 
-      // Reset data ke kosong saat proses koneksi jika bukan dari cache
-      allCrewData = [];
-      filteredCrewData = [];
+      // Bersihkan list & render empty saat sync
       activeCrewNip = null;
       renderEmptySelection();
-      document.getElementById("crewListContainer").innerHTML = "";
+      document.getElementById("crewListContainer").innerHTML = `<div class="p-6 text-center text-sm text-gray-400">Loading data...</div>`;
 
       if (GAS_WEB_APP_URL && GAS_WEB_APP_URL.startsWith("http")) {
         try {
@@ -283,7 +248,6 @@
           if (json && Array.isArray(json.data)) {
             allCrewData = json.data;
             localStorage.setItem("kintoun_crew_data", JSON.stringify(allCrewData));
-            
             badge.textContent = "LIVE API CONNECTED";
             badge.className = "px-2.5 py-1 text-[10px] font-semibold tracking-wider bg-green-50 text-green-600 border border-green-200";
           } else {
@@ -291,14 +255,23 @@
           }
         } catch (err) {
           console.warn("Failed to fetch live data:", err);
-          allCrewData = [];
           badge.textContent = "CONNECTION FAILED";
           badge.className = "px-2.5 py-1 text-[10px] font-semibold tracking-wider bg-red-50 text-red-600 border border-red-200";
+          // Coba load ulang dari cache jika fetch gagal
+          const cachedData = localStorage.getItem("kintoun_crew_data");
+          if (cachedData) {
+            try {
+              allCrewData = JSON.parse(cachedData);
+              badge.textContent = "FAILED (USING CACHE)";
+            } catch(e) {
+              allCrewData = [];
+            }
+          } else {
+            allCrewData = [];
+          }
         }
       } else {
         allCrewData = [];
-        badge.textContent = "CONNECTION FAILED";
-        badge.className = "px-2.5 py-1 text-[10px] font-semibold tracking-wider bg-red-50 text-red-600 border border-red-200";
       }
 
       if (syncIcon) syncIcon.classList.remove("animate-spin");
