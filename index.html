@@ -219,11 +219,7 @@
       { key: "leader",       label: "Leaders",       fullLabel: "Store / Shift Leader" }
     ];
 
-    
-    // =========================================================================
-    // KONFIGURASI URL GOOGLE APPS SCRIPT
-    // =========================================================================
-    const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycby4tN3yo3-5Z7o_9aIOuoSsfkY2wI0ryZplL09LdT1cxYU9ClieXWZxokMp-EFIqrPK/exec"; 
+    const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycby4tN3yo3-5Z7o_9aIOuoSsfkY2wI0ryZplL09LdT1cxYU9ClieXWZxokMp-EFIqrPK/exec";
 
     let allCrewData = [];
     let filteredCrewData = [];
@@ -266,7 +262,7 @@
       const syncIcon = document.getElementById("syncIcon");
       if (syncIcon) syncIcon.classList.add("animate-spin");
 
-      // Bersihkan data lama saat sync dimulai
+      // Reset data ke kosong saat proses koneksi
       allCrewData = [];
       filteredCrewData = [];
       activeCrewNip = null;
@@ -307,7 +303,6 @@
       updateSummaryKPIs();
       applyFilters();
     }
-
 
     function populateStoreDropdown() {
       const select = document.getElementById("storeFilter");
@@ -503,7 +498,7 @@
       document.getElementById("btnDownloadAll").classList.add("hidden");
     }
 
-    // PDF ENGINE (same logic)
+    // PDF ENGINE
     async function renderCertificateToDataUrl(crewName, stationLabel, scoreVal) {
       return new Promise((resolve, reject) => {
         const canvas = document.createElement("canvas");
